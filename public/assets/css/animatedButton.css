@@ -1,0 +1,7 @@
+#menu-toggle .material-icons {
+    transition: transform 0.3s;
+}
+
+#menu-toggle.active .material-icons {
+    transform: rotate(180deg);
+}
