@@ -24,26 +24,23 @@
     @enderror
 </div>
 
-@if (request()->routeIs('post.show'))
-    <x-form.label class="font-semibold text-lg" value="Category" for="category" />
-    <x-form.input placeholder="Enter Category" id="category" name="category" type="text"
-        value="{{ old('category', $post->category->title) }}" :disabled="request()->routeIs('post.show')" />
-@else
-    <x-form.label class="font-semibold text-lg" value="Category" for="post_category_id" />
-    <x-form.select name="post_category_id" id="post_category_id" :disabled="request()->routeIs('post.show')">
-        <option disabled hidden {{ old('category') != null ?: 'selected' }}>
-            {{ __('Select Category') }}
+
+
+<x-form.label class="font-semibold text-lg " value="Category" for="post_category_id" />
+<x-form.select name="post_category_id" id="post_category_id" :disabled="request()->routeIs('post.show')">
+    <option disabled hidden {{ old('category') != null ?: 'selected' }}>
+        {{ __('Select Category') }}
+    </option>
+    @foreach ($categories as $category)
+        <option value="{{ $category->id }}" @selected(!empty($post) && $category->id == $post->post_category_id)>
+            {{ $category->title }}
         </option>
-        @foreach ($categories as $category)
-            <option value="{{ $category->id }}" @selected(!empty($post) && $category->id == $post->post_category_id)>
-                {{ $category->title }}
-            </option>
-        @endforeach
-    </x-form.select>
-    @error('post_category_id')
-        <x-form.error messages="{{ $message }}" />
-    @enderror
-@endif
+    @endforeach
+</x-form.select>
+@error('post_category_id')
+    <x-form.error messages="{{ $message }}" />
+@enderror
+
 
 <x-form.label class="font-semibold text-lg" value="Status" for="status" />
 <x-form.select name="status" id="status" :disabled="request()->routeIs('post.show')">

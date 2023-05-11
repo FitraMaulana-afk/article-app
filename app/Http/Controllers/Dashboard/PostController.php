@@ -62,7 +62,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $postView = $this->postView;
-        return view($postView . 'show', compact('post'));
+        $categories = PostCategory::all();
+        return view($postView . 'show', compact('post', 'categories'));
     }
 
     /**

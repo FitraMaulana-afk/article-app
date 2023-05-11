@@ -23,9 +23,8 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $landingView = $this->landingView;
-        $lastes_post = Post::latest()->first();
         $posts = $this->postService->index($request)->orderby('created_at', 'desc')->get();
-        return view($landingView . 'index', compact('posts', 'lastes_post'));
+        return view($landingView . 'index', compact('posts'));
     }
 
     /**
@@ -47,9 +46,10 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        $landingView = $this->landingView;
+        return view($landingView . 'show', \compact('post'));
     }
 
     /**

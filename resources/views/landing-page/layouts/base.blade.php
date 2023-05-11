@@ -16,12 +16,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Poppins&display=swap"
         rel="stylesheet">
 
+    {{-- icons --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!-- Styles -->
     <style>
         [x-cloak] {
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="{{ asset('assets/css/slider.css') }}">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,9 +32,13 @@
 
 <body>
     <x-landing.navbar />
-    <main class="px-32">
-        {{ $slot }}
-    </main>
+    <div class="flex flex-col justify-center items-center top-0">
+        <div class="container">
+            <main class="px-20">
+                {{ $slot }}
+            </main>
+        </div>
+    </div>
     <script>
         const btn = document.querySelector('button[aria-controls="mobile-menu"]');
         const menu = document.querySelector('#mobile-menu');
@@ -41,6 +48,7 @@
             menu.classList.toggle('hidden');
         });
     </script>
+    <script src="{{ asset('assets/js/slider.js') }}"></script>
 </body>
 
 </html>
