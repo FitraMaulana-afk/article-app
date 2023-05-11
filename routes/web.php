@@ -14,7 +14,9 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// home routes
 Route::get('/', 'Landing\HomeController@index')->name('home');
+
 
 
 // useless routes

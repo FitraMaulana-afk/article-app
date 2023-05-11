@@ -32,7 +32,7 @@ class PostService
         try {
             $posts = $this->post->query()->with('user', 'category');
 
-            $posts->when($request->routeIs('landing.home'), function ($query) {
+            $posts->when($request->routeIs('landing.index'), function ($query) {
                 $query->where('status', PublishStatusEnum::status['PUBLISH']);
             });
 
