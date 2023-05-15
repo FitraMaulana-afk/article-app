@@ -39,7 +39,7 @@
             $variantClasses = 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-600 dark:text-gray-400 dark:bg-dark-eval-1 dark:hover:bg-dark-eval-2 dark:hover:text-gray-200';
             break;
         case 'orange':
-            $variantClasses = 'inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-orange-500 rounded-lg  hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
+            $variantClasses = 'inline-flex items-center py-2.5 px-3 text-sm font-medium text-white bg-orange-500 rounded-lg  hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
             break;
         default:
             $variantClasses = 'bg-purple-500 text-white hover:bg-purple-600 focus:ring-purple-500';

@@ -34,11 +34,15 @@
     <x-landing.navbar />
     <div class="flex flex-col justify-center items-center top-0">
         <div class="container">
-            <main class="px-20">
+            <main class="px-20 min-h-screen">
                 {{ $slot }}
             </main>
         </div>
     </div>
+    <x-landing.footer />
+
+
+
     <script>
         const btn = document.querySelector('button[aria-controls="mobile-menu"]');
         const menu = document.querySelector('#mobile-menu');

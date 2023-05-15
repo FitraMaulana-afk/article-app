@@ -1,4 +1,4 @@
-<nav class="top-0 py-10 " x-data="dropdown()">
+<nav class="top-0 pb-10 pt-5 " x-data="dropdown()">
 
     <div class="flex w-full justify-center px-20">
         <div class="flex w-full justify-between items-center container">
@@ -22,8 +22,7 @@
             </div>
 
 
-            <div class="lg:flex hidden">
-                {{-- search engine --}}
+            <div class="lg:flex hidden ">
                 <form class="flex items-center">
                     <label for="voice-search" class="sr-only">Search</label>
                     <div class="relative w-full">
@@ -39,7 +38,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Cari Sesuatu" required>
                     </div>
-                    <x-button type="submit" variant="orange">
+                    <x-button type="submit" variant="orange" class="ml-2">
                         <svg aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,27 +47,69 @@
                     </x-button>
                 </form>
             </div>
+
             <div class="lg:flex hidden">
-                <button class="font-bold text-orange-500 rounded-lg hover:underline p-2.5">Login</button>
-                <x-button variant="orange">Register</x-button>
+                @if (Auth::user())
+                    <x-dropdown align="right">
+                        <x-slot name="trigger">
+                            <button
+                                class="flex items-center p-2 text-sm font-medium text-gray-800 rounded-md transition duration-150 ease-in-out hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200">
+                                <div>{{ Auth::user()->name }}</div>
+
+                                <div class="ml-1">
+                                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <!-- Profile -->
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('landing.logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('landing.logout')"
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                @else
+                    <a href="{{ route('landing.login') }}"
+                        class="font-bold text-orange-500 rounded-lg hover:underline p-2.5">Login</a>
+                    <x-button href="{{ route('landing.admin.register') }}" variant="orange">Register</x-button>
+                @endif
             </div>
+
+
+
         </div>
     </div>
     <div class="hidden lg:flex my-6 bg-orange-500 py-2 px-4 rounded-sm shadow-md text-white w-full justify-center">
         <ul class="flex justify-between items-center text-center w-full container px-20">
             <li class="font-bold hover:text-gray-200">
-                <a href="">
+                <a href="{{ route('landing.index') }}">
                     HOME
                 </a>
             </li>
             <li class="font-bold hover:text-gray-200">
-                <a href="">NEWS</a>
+                <a href="">TEKNOLOGI</a>
             </li>
             <li class="font-bold hover:text-gray-200">
                 <a href="">BISNIS</a>
             </li>
             <li class="font-bold hover:text-gray-200">
-                <a href="">BOLA</a>
+                <a href="">OLAHRAGA</a>
             </li>
         </ul>
 

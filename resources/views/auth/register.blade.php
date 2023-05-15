@@ -3,7 +3,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('landing.register') }}">
+        <form method="POST" action="{{ route('landing.admin.register') }}">
             @csrf
 
             <div class="grid gap-6">
@@ -73,7 +73,7 @@
 
                 <p class="text-sm text-gray-600 dark:text-gray-400">
                     {{ __('Already registered?') }}
-                    <a href="{{ route('landing.login') }}" class="text-blue-500 hover:underline">
+                    <a href="{{ route('landing.admin.login') }}" class="text-blue-500 hover:underline">
                         {{ __('Login') }}
                     </a>
                 </p>

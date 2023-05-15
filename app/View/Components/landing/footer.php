@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class base extends Component
+class footer extends Component
 {
     /**
      * Create a new component instance.
@@ -22,6 +22,7 @@ class base extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('landing-page.layouts.base');
+        $categories = PostCategory::all();
+        return view('components.landing.footer', compact('categories'));
     }
 }
