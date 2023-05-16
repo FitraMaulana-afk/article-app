@@ -38,18 +38,10 @@
     </div>
 
     <div class="mt-10 w-full">
-        <h2 class="text-xl font-bold">Berita Olahraga</h2>
         <div class="w-full flex flex-col ">
-            @foreach ($posts->take(5) as $post)
-                <div class="p-4 my-1 flex">
-                    <img src="{{ asset('storage/' . $post->image) }}" class="rounded-lg gambar-hover w-1/5"
-                        alt="img" draggable="false">
-                    <div class="ml-3">
-                        <p class="text-sm text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
-                        <h2 class="text-lg font-bold">{{ $post->title }}</h2>
-                        <p class="text-base text-gray-500 line-clamp-2">{{ $post->description }}</p>
-                    </div>
-                </div>
+            @foreach ($posts as $post)
+                <x-landing.card-down :time="$post->created_at->diffForHumans()" :title="$post->title" :image="$post->image" :description="$post->description"
+                    :link="$post" :category="$post->category->title" />
             @endforeach
         </div>
     </div>
@@ -62,7 +54,6 @@
                 <x-form.textarea-input class="w-full border-none shadow-md" placeholder="Tulis Komentar..." />
                 <x-button variant="orange" size="sm" class="float-right mt-3">
                     <span>Kirim</span>
-
                 </x-button>
             </form>
         </div>
@@ -70,11 +61,43 @@
             <h2 class="text-xl font-bold"></h2>
         </div>
     </div>
-
     <div class="w-full flex justify-between gap-8">
-        <div class="w-3/4 bg-gray-300/25 flex items-center  flex-col py-32 rounded-lg mt-10 gap-3">
-            <i class="fa-solid fa-comments text-8xl"></i>
-            <h2 class="font-bold text-xl">Belum ada Komentar</h2>
+        <div class="w-3/4 bg-gray-300/25 flex items-center  flex-col py-10 rounded-lg mt-10 gap-3">
+            @forelse (range(1,10) as $item)
+                <div class="flex justify-between gap-4 mx-8">
+                    <div class="rounded-full">
+                        <img src="{{ asset('assets/content/content1.jpeg') }}" class="rounded-full w-96" alt="">
+                    </div>
+                    <div>
+                        <h2 class="text-md font-bold">Fitra Maulana</h2>
+                        <p class="text-sm text-gray-600/75">1 jam yang lalu</p>
+                        <p class="text-gray-800">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+                            asperiores reiciendis porro
+                            ducimus, animi, sunt facere architecto nam officiis laboriosam et. Doloribus odit corrupti
+                            nemo ea optio cumque! Repudiandae dignissimos in consequatur explicabo sed molestias,
+                            inventore est voluptatibus ipsam amet? Dolorem, eligendi debitis assumenda explicabo error
+                            fuga voluptates pariatur possimus ipsum recusandae perspiciatis corporis maiores veritatis
+                            provident earum enim repudiandae temporibus. Ut sequi amet culpa veniam iusto alias, dicta
+                            iste earum debitis molestias nesciunt ipsa! Reiciendis voluptate delectus in placeat
+                            tempora, voluptatum dolores natus porro, quas laudantium vel expedita ducimus iusto at magni
+                            velit suscipit. Perferendis, ad sit! Eligendi, asperiores?</p>
+                        <div class="flex justify-normal gap-8 mt-2 mb-4">
+                            <button class="bg-transparant text-base text-gray-500  hover:text-gray-800 font-medium">
+                                Edit
+                            </button>
+                            <button class="bg-transparant text-base text-gray-500  hover:text-gray-800 font-medium">
+                                Hapus
+                            </button>
+                            <button class="bg-transparant text-base text-gray-500  hover:text-gray-800 font-medium">
+                                Balas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <i class="fa-solid fa-comments text-8xl"></i>
+                <h2 class="font-bold text-xl">Belum ada Komentar</h2>
+            @endforelse
         </div>
     </div>
 </x-landing.base>

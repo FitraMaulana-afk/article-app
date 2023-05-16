@@ -41,6 +41,9 @@
         case 'orange':
             $variantClasses = 'inline-flex items-center py-2.5 px-3 text-sm font-medium text-white bg-orange-500 rounded-lg  hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
             break;
+        case 'transparant':
+            $variantClasses = 'bg-transparant text-sm text-gray-600 hover:text-gray-800 ';
+            break;
         default:
             $variantClasses = 'bg-purple-500 text-white hover:bg-purple-600 focus:ring-purple-500';
     }

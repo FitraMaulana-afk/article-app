@@ -6,7 +6,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('landing.admin.login') }}">
+        <form method="POST" action="{{ route('landing.login') }}">
             @csrf
 
             <div class="grid gap-6">

@@ -87,12 +87,9 @@
                 @else
                     <a href="{{ route('landing.login') }}"
                         class="font-bold text-orange-500 rounded-lg hover:underline p-2.5">Login</a>
-                    <x-button href="{{ route('landing.admin.register') }}" variant="orange">Register</x-button>
+                    <x-button href="{{ route('landing.register') }}" variant="orange">Register</x-button>
                 @endif
             </div>
-
-
-
         </div>
     </div>
     <div class="hidden lg:flex my-6 bg-orange-500 py-2 px-4 rounded-sm shadow-md text-white w-full justify-center">
