@@ -5,7 +5,7 @@
             <div>
                 <h2 class="text-4xl font-bold">Berita Utama</h2>
                 @foreach ($posts->take(1) as $post)
-                    <x-landing.card class="w-full line-clamp-3" :time="$post->created_at->diffForHumans()" :title="$post->title" :description="$post->description"
+                    <x-landing.card class="w-full line-clamp-3" :time="$post->updated_at->diffForHumans()" :title="$post->title" :description="$post->description"
                         :image="$post->image" :slug="$post" />
                 @endforeach
             </div>
@@ -24,14 +24,14 @@
         <h2 class="text-xl font-bold">Berita Lainnya</h2>
         <x-landing.slide-content>
             @foreach ($posts as $post)
-                <x-landing.slidebar-card :link="$post" :time="$post->created_at->diffForHumans()" :title="$post->title" :image="$post->image" />
+                <x-landing.slidebar-card :link="$post" :time="$post->updated_at->diffForHumans()" :title="$post->title" :image="$post->image" />
             @endforeach
         </x-landing.slide-content>
     </div>
 
     <div class="w-full">
         @foreach ($posts as $post)
-            <x-landing.card-down :time="$post->created_at->diffForHumans()" :title="$post->title" :image="$post->image" :description="$post->description"
+            <x-landing.card-down :time="$post->updated_at->diffForHumans()" :title="$post->title" :image="$post->image" :description="$post->description"
                 :link="$post" :category="$post->category->title" />
         @endforeach
     </div>

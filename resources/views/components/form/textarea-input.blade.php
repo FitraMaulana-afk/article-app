@@ -5,8 +5,7 @@
 
 <div>
     <textarea {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge([
-        'class' => ' py-2 border border-gray-400 rounded-md focus:border-gray-400
-                                        focus:ring-offset-white dark:border-gray-600 dark:bg-dark-eval-1
-                                        dark:text-gray-300 dark:focus:ring-offset-dark-eval-1',
+        'class' =>
+            'block p-2.5 w-full text-gray-900 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500',
     ]) !!} rows="4">{{ $text }}</textarea>
 </div>

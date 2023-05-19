@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', 'Landing\PageController@index')->name('index');
 Route::get('/detail/{post}', 'Landing\PageController@show')->name('show');
 
+Route::resource('/teknologi', 'Landing\TeknologiController');
+
 // Route::middleware('guest')->group(function () {
 //     Route::get('/login', 'Landing\Auth\LoginController@create')->name('login');
 //     Route::post('/login', 'Landing\Auth\LoginController@store')->name('login');

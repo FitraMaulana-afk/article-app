@@ -100,7 +100,7 @@
                 </a>
             </li>
             <li class="font-bold hover:text-gray-200">
-                <a href="">TEKNOLOGI</a>
+                <a href="{{ route('landing.teknologi.index') }}">TEKNOLOGI</a>
             </li>
             <li class="font-bold hover:text-gray-200">
                 <a href="">BISNIS</a>
