@@ -20,21 +20,7 @@
         </div>
     </div>
 
-    <div class="my-10">
-        <h2 class="text-xl font-bold">Berita Lainnya</h2>
-        <x-landing.slide-content>
-            @foreach ($posts as $post)
-                <x-landing.slidebar-card :link="$post" :time="$post->updated_at->diffForHumans()" :title="$post->title" :image="$post->image" />
-            @endforeach
-        </x-landing.slide-content>
-    </div>
-
-    <div class="w-full">
-        @foreach ($posts as $post)
-            <x-landing.card-down :time="$post->updated_at->diffForHumans()" :title="$post->title" :image="$post->image" :description="$post->description"
-                :link="$post" :category="$post->category->title" />
-        @endforeach
-    </div>
+    @include('landing-page.home.content')
 
 
 </x-landing.base>

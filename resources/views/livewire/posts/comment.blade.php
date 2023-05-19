@@ -1,6 +1,4 @@
 <div>
-
-
     <div class="w-full flex justify-between gap-8">
         <div class="w-3/4 bg-gray-300/25 flex flex-col p-4 rounded-lg mt-10 gap-3">
             <h2 class="font-bold text-xl">Komentar {{ $total_comments }}</h2>
@@ -12,7 +10,6 @@
                         <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-800 border border-danger-300"
                             role="alert">
                             {{ $message }}
-
                         </div>
                     @enderror
                     <x-button variant="orange" size="sm" class="float-right mt-3">
@@ -40,7 +37,7 @@
                     <div class="w-full flex flex-col justify-center items-center  mx-4">
                         <div class="w-full flex  justify-center gap-8 mx-4">
                             <div class="rounded-full w-1/12">
-                                <img src="{{ asset('assets/content/content1.jpeg') }}" class="rounded-full "
+                                <img src="{{ asset('assets/content/user_default_img.png') }}" class="rounded-full "
                                     alt="">
                             </div>
                             <div class="w-5/6">

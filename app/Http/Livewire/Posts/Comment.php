@@ -22,7 +22,7 @@ class Comment extends Component
         // $article = Post::find($this->post->id);
         return view('livewire.posts.comment', [
             'comments' => ModelsComment::where('post_id', $this->post->id)
-                ->with(['user', 'childrens'])
+                ->with(['user', 'childrens', 'post'])
                 ->whereNull('comment_id')
                 ->get(),
             'total_comments' => ModelsComment::with('user')->where('post_id', $this->post->id)->count()

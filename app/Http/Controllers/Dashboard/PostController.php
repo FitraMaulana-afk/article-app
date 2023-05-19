@@ -28,7 +28,9 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $postView = $this->postView;
-        $posts = $this->postService->index($request)->paginate(10);
+        $posts = $this->postService
+            ->index($request)
+            ->paginate(10);
         return \view($postView . 'index', compact('posts'));
     }
 
