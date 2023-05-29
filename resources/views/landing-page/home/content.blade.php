@@ -2,7 +2,7 @@
     <h2 class="text-xl font-bold">Berita Lainnya</h2>
     <x-landing.slide-content>
         @foreach ($posts as $post)
-            <x-landing.slidebar-card :time="$post->created_at->diffForHumans()" :title="$post->title" :image="$post->image" />
+            <x-landing.slidebar-card :time="$post->created_at->diffForHumans()" :title="$post->title" :image="$post->image" :link="$post" />
         @endforeach
     </x-landing.slide-content>
 </div>

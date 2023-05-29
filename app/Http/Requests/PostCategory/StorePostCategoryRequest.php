@@ -22,15 +22,15 @@ class StorePostCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => [
-                "required",
-                "max:255",
+            'title' => [
+                'required',
+                'max:255',
             ],
-            "description" => [
-                "nullable"
+            'description' => [
+                'nullable',
             ],
-            "link" => [
-                "nullable"
+            'link' => [
+                'nullable',
             ],
         ];
     }

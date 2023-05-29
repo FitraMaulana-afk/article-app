@@ -22,15 +22,15 @@ class UpdatePostCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "title" => [
-                "nullable",
-                "max:255",
+            'title' => [
+                'nullable',
+                'max:255',
             ],
-            "description" => [
-                "nullable"
+            'description' => [
+                'nullable',
             ],
-            "link" => [
-                "nullable"
+            'link' => [
+                'nullable',
             ],
         ];
     }

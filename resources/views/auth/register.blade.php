@@ -3,7 +3,7 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('landing.register') }}">
+        <form method="POST" action="{{ route('landing.register') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="grid gap-6">

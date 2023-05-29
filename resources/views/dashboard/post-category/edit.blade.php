@@ -8,7 +8,7 @@
         </div>
     </x-slot>
 
-    <div class="relative overflow-x-auto shadow-md bg-white">
+    <div class="relative overflow-x-auto shadow-md bg-white dark:bg-dark-eval-3">
         <div class="px-6 py-3">
             <form action="{{ route('post-category.update', $postCategory) }}" method="post" enctype="multipart/form-data">
                 @csrf

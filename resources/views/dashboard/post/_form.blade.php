@@ -97,7 +97,7 @@
         @enderror
     </div>
 
-    <div class="mt-2">
+    <div class="mt-6">
         <x-button variant="success" class="mb-3" size="sm" x-data="" type="submit">
             {{ __('Save') }}
         </x-button>
@@ -122,7 +122,7 @@
     </div>
 @endif
 
-<x-button variant="warning" class="mb-3" size="sm" :href="route('post.index')" x-data="">
+<x-button variant="danger" class="mb-3" size="sm" :href="route('post.index')" x-data="">
     {{ __('Back') }}
 </x-button>
 

@@ -9,9 +9,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role;
-
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,8 +30,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (auth()->user()->hasRole('user')) {
+
             return redirect()->intended(RouteServiceProvider::LANDING);
         } elseif (auth()->user()->hasRole('admin') && auth()->user()->hasRole('user')) {
+
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 

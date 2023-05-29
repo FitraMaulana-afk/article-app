@@ -31,8 +31,8 @@ class Post extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
-            ]
+                'source' => 'title',
+            ],
         ];
     }
 
@@ -40,7 +40,6 @@ class Post extends Model
     {
         return 'slug';
     }
-
 
     public function getIsPublishAttribute(): bool
     {
@@ -51,6 +50,7 @@ class Post extends Model
     {
         return (int) $this->status === PublishStatusEnum::status['DRAFT'];
     }
+
     public function getIsPendingAttribute(): bool
     {
         return (int) $this->status === PublishStatusEnum::status['PENDING'];
@@ -73,11 +73,11 @@ class Post extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(PostCategory::class,        'post_category_id',);
+        return $this->belongsTo(PostCategory::class, 'post_category_id');
     }
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'post_id',);
+        return $this->hasMany(Comment::class, 'post_id');
     }
 }

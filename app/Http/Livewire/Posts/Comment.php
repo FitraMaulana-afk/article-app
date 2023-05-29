@@ -4,13 +4,27 @@ namespace App\Http\Livewire\Posts;
 
 use App\Models\Comment as ModelsComment;
 use App\Models\Post;
+use App\Services\CommentService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Comment extends Component
 {
-    public $body, $post, $body2, $showFormEdit, $showFormReply;
-    public $comment_id, $edit_comment_id;
+    public $count = 4;
+
+    public $body;
+
+    public $post;
+
+    public $body2;
+
+    public $showFormEdit;
+
+    public $showFormReply;
+
+    public $comment_id;
+
+    public $edit_comment_id;
 
     public function mount($id)
     {
@@ -19,42 +33,48 @@ class Comment extends Component
 
     public function render()
     {
-        // $article = Post::find($this->post->id);
         return view('livewire.posts.comment', [
             'comments' => ModelsComment::where('post_id', $this->post->id)
                 ->with(['user', 'childrens', 'post'])
                 ->whereNull('comment_id')
                 ->get(),
-            'total_comments' => ModelsComment::with('user')->where('post_id', $this->post->id)->count()
+            'total_comments' => ModelsComment::with('user')->where('post_id', $this->post->id)->count(),
         ]);
     }
 
     public function store()
     {
-        $this->validate(['body' => 'required']);
+        if (Auth()->user()) {
+            $this->validate(
+                ['body' => 'required'],
+                ['body.required' => 'The comment field is required.']
+            );
 
-        $comment = ModelsComment::create([
-            'user_id' => Auth::user()->id,
-            'post_id' => $this->post->id,
-            'body' => $this->body
-        ]);
+            $comment = ModelsComment::create([
+                'user_id' => Auth::user()->id,
+                'post_id' => $this->post->id,
+                'body' => $this->body,
+            ]);
+            if ($comment) {
+                $this->emit('comment_store', $comment->id);
 
-        if ($comment) {
-            $this->emit('comment_store', $comment->id);
+                $this->body = null;
+            } else {
+                \session()->flash('danger', 'komentar gagal terkirim');
 
-            $this->body = NULL;
+                return to_route('landing.show', $this->post->slug);
+            }
         } else {
-            \session()->flash('danger', 'komentar gagal terkirim');
-            return to_route('landing.show', $this->post->slug);
+            \session()->flash('info', 'komentar gagal terkirim');
+            $this->body = null;
         }
     }
-
 
     public function selectReply($id)
     {
         $this->comment_id = $id;
-        $this->edit_comment_id == NULL;
-        $this->body2 = NULL;
+        $this->edit_comment_id == null;
+        $this->body2 = null;
         $this->showFormReply = true;
         $this->showFormEdit = false;
     }
@@ -67,15 +87,16 @@ class Comment extends Component
             'user_id' => Auth::user()->id,
             'post_id' => $this->post->id,
             'body' => $this->body2,
-            'comment_id' => $comment->comment_id ? $comment->comment_id : $comment->id
+            'comment_id' => $comment->comment_id ? $comment->comment_id : $comment->id,
         ]);
 
         if ($comment) {
             $this->emit('comment_store', $comment->id);
             $this->showFormReply = false;
-            $this->body = NULL;
+            $this->body = null;
         } else {
             \session()->flash('danger', 'komentar gagal terkirim');
+
             return to_route('landing.show', $this->post->slug);
         }
     }
@@ -94,16 +115,17 @@ class Comment extends Component
         $this->validate(['body2' => 'required']);
 
         $comment = ModelsComment::where('id', $this->edit_comment_id)->update([
-            'body' => $this->body2
+            'body' => $this->body2,
         ]);
 
         if ($comment) {
             $this->emit('comment_store', $this->edit_comment_id);
-            $this->edit_comment_id == NULL;
-            $this->body2 = NULL;
+            $this->edit_comment_id == null;
+            $this->body2 = null;
             $this->showFormEdit = false;
         } else {
             \session()->flash('danger', 'komentar gagal diubah');
+
             return to_route('landing.show', $this->post->slug);
         }
     }
@@ -113,9 +135,10 @@ class Comment extends Component
         $comment = ModelsComment::where('id', $id)->delete();
 
         if ($comment) {
-            return NULL;
+            return null;
         } else {
             \session()->flash('danger', 'komentar gagal diubah');
+
             return to_route('landing.show', $this->post->slug);
         }
     }

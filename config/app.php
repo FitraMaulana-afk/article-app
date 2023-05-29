@@ -85,7 +85,6 @@ return [
 
     'locale' => 'id',
 
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -170,7 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Livewire\LivewireServiceProvider::class,
-
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        Mckenziearts\Notify\LaravelNotifyServiceProvider::class
     ])->toArray(),
 
     /*
@@ -185,6 +185,9 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Notify' => McKenziearts\Notify\Facades\Notify::class,
+
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

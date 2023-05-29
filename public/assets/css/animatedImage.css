@@ -1,0 +1,23 @@
+.wrapperImg {
+    overflow: hidden;
+    border: 6px solid #fff;
+}
+
+.wrapperImg img {
+    height: 100%;
+    width: 100%;
+    transition: o.5s;
+    -webkit-transition: o.5s;
+    -moz-transition: o.5s;
+    -ms-transition: o.5s;
+    -o-transition: o.5s;
+    cursor: pointer;
+}
+
+.wrapperImg img:hover {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -o-transform: scale(1.3);
+}

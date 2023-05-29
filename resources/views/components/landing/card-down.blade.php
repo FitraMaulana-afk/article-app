@@ -9,10 +9,14 @@
 
 <div class="w-full flex flex-col ">
     <hr>
-    <div class="p-4 my-1 flex">
-        <img src="{{ asset('storage/' . $image) }}" class="rounded-lg gambar-hover w-1/5" alt="img" draggable="false">
-        <div class="ml-3">
-            <h6 class="text-sm font-semibold text-orange-500">
+    <div class="p-4 my-1 lg:flex lg:flex-row flex flex-col w-full">
+        <div class="lg:w-1/4 w-full overflow-hidden rounded-lg">
+            <img src="{{ asset('storage/' . $image) }}"
+                class="rounded-lg gambar-hover w-auto hover:scale-105 z-0 transition-all ease-in-out duration-300"
+                alt="img" draggable="false">
+        </div>
+        <div class="lg:ml-3 mt-2 lg:w-3/4 w-full">
+            <h6 class="text-sm font-semibold text-primaryRed">
                 {{ $category }}
             </h6>
             <p class="text-sm text-gray-500">{{ $time }}</p>

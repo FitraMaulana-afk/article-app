@@ -89,7 +89,7 @@
                                 <form action="{{ route('post.destroy', $post) }}" method="post" class="flex ">
                                     @csrf
                                     @method('DELETE')
-                                    <x-button variant="danger" size="sm" x-data="">
+                                    <x-button variant="danger" size="sm" data-confirm-delete="true">
                                         {{ __('Delete') }}
                                     </x-button>
                                 </form>

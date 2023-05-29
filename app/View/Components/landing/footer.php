@@ -23,6 +23,7 @@ class footer extends Component
     public function render(): View|Closure|string
     {
         $categories = PostCategory::all();
+
         return view('components.landing.footer', compact('categories'));
     }
 }

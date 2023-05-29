@@ -2,7 +2,6 @@
 
 namespace App\View\Components\landing;
 
-use App\Models\PostCategory;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;

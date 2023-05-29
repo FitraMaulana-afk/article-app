@@ -18,6 +18,8 @@
         rel="stylesheet" />
     {{-- icons --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="icon" type="png" href="{{ asset('assets/content/icon.png') }}">
 
 
     <!-- Styles -->
@@ -32,9 +34,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
 </head>
 
 <body class="font-sans antialiased">
+    @include('sweetalert::alert')
     <div x-data="mainState" :class="{ dark: isDarkMode }" x-on:resize.window="handleWindowResize" x-cloak>
         <div class="min-h-screen text-gray-900 bg-gray-100 dark:bg-dark-eval-0 dark:text-gray-200">
             <!-- Sidebar -->
@@ -70,8 +74,9 @@
     </div>
 
     {{-- script --}}
+
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 
 </body>
 

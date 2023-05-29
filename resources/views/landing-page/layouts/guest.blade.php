@@ -11,6 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title }}</title>
+    <link rel="icon" type="png" href="{{ asset('assets/content/icon.png') }}">
 
     <!-- Fonts -->
     <link

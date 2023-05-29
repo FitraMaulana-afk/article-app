@@ -13,6 +13,7 @@ class PageController extends Controller
     public string $landingView = 'landing-page.home.';
 
     public PostService $postService;
+
     private PostCategory $postCategory;
 
     public function __construct()
@@ -20,6 +21,7 @@ class PageController extends Controller
         $this->postService = new PostService;
         $this->postCategory = new PostCategory();
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -94,5 +96,9 @@ class PageController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
     }
 }

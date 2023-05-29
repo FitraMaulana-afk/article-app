@@ -20,9 +20,9 @@
             <a href="{{ route('landing.index') }}">
                 Home
             </a>
-            <span class="text-orange-500">
+            <span class="text-primaryRed">
                 <i class="fa-solid fa-chevron-right text-xs">
-                    <a href="" class="text-orange-500 font-medium text-base">
+                    <a href="" class="text-primaryRed font-medium text-base">
                         {{ $post->category->title }}
                     </a>
                 </i>
@@ -39,7 +39,7 @@
             <h2 class="text-xl font-bold">Topik Popular</h2>
             @foreach ($categories as $category)
                 <p class="text-xl mt-4 font-semibold">
-                    <span class="text-orange-500 font-bold mr-2">#</span>{{ $category->title }}
+                    <span class="text-primaryRed font-bold mr-2">#</span>{{ $category->title }}
                 </p>
             @endforeach
         </div>

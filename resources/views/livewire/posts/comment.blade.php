@@ -2,28 +2,26 @@
     <div class="w-full flex justify-between gap-8">
         <div class="w-3/4 bg-gray-300/25 flex flex-col p-4 rounded-lg mt-10 gap-3">
             <h2 class="font-bold text-xl">Komentar {{ $total_comments }}</h2>
-            @auth
-                <form class="w-full" wire:submit.prevent="store">
-                    <x-form.textarea-input class="w-full border-none shadow-md" wire:model.defer="body"
-                        placeholder="Tulis Komentar..." />
-                    @error('body')
-                        <div class="mb-4 rounded-lg bg-danger-100 px-6 py-5 text-base text-danger-800 border border-danger-300"
-                            role="alert">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                    <x-button variant="orange" size="sm" class="float-right mt-3">
-                        <span>Kirim</span>
-                    </x-button>
-                </form>
-            @endauth
-            @guest
+            <form class="w-full" wire:submit.prevent="store">
+                <x-form.textarea-input class="w-full border-none shadow-md" wire:model.defer="body"
+                    placeholder="Tulis Komentar..." />
+                @error('body')
+                    <div class="mt-4 rounded-lg text-base text-danger-500" role="alert">
+                        {{ $message }}
+                    </div>
+                @enderror
+                <x-button variant="red" size="sm" class="float-right mt-3">
+                    <span>Kirim</span>
+                </x-button>
+            </form>
+            @if (session('info'))
                 <div class="mb-4 rounded-lg bg-info-100 px-6 py-5 text-base text-info-800 border border-info-300"
                     role="alert">
-                    Login terlebih dahulu untuk Berkomentar <a href="{{ route('landing.login') }}" class="underline">Klik
+                    Login terlebih dahulu untuk Berkomentar <a href="{{ route('landing.login') }}"
+                        class="underline">Klik
                         Disini</a>
                 </div>
-            @endguest
+            @endif
         </div>
         <div class="w-1/4">
             <h2 class="text-xl font-bold"></h2>
@@ -37,8 +35,10 @@
                     <div class="w-full flex flex-col justify-center items-center  mx-4">
                         <div class="w-full flex  justify-center gap-8 mx-4">
                             <div class="rounded-full w-1/12">
-                                <img src="{{ asset('assets/content/user_default_img.png') }}" class="rounded-full "
-                                    alt="">
+                                <img @if (!empty(auth()->user()->avatar)) src="{{ asset('storage/' . auth()->user()->avatar) }}"
+                                @else
+                                src="{{ asset('assets/content/defaultAvatar1.jpg') }}" @endif
+                                    class="rounded-full " alt="">
                             </div>
                             <div class="w-5/6">
                                 <h2 class="text-md font-bold">{{ $comment->user->name }}</h2>
@@ -106,12 +106,15 @@
                     </div>
                 </div>
 
+
                 @if ($comment->childrens)
                     @foreach ($comment->childrens as $reply)
                         <div class="flex justify-center gap-4 ml-20">
                             <div class="rounded-full w-1/12">
-                                <img src="{{ asset('assets/content/content1.jpeg') }}" class="rounded-full "
-                                    alt="">
+                                <img @if (!empty(auth()->user()->avatar)) src="{{ asset('storage/' . auth()->user()->avatar) }}"
+                                @else
+                                src="{{ asset('assets/content/defaultAvatar1.jpg') }}" @endif
+                                    class="rounded-full " alt="">
                             </div>
                             <div class="w-4/5">
                                 <h2 class="text-md font-bold">{{ $reply->user->name }}</h2>
