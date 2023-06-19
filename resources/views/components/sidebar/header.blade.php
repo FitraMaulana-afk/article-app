@@ -1,8 +1,8 @@
-<div class="flex items-center justify-between bg-blue-600 py-3 flex-shrink-0 px-3">
+<div class="flex items-center justify-between bg-blue-600 dark:bg-dark-eval-0 py-3 flex-shrink-0 px-3">
     <!-- Logo -->
     <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-2">
         <h2 class="font-bold text-white bg-blue-900 p-3 rounded-full dark:text-gray-800 dark:bg-slate-100 ">FM</h2>
-        <h2 class="font-bold text-white dark:text-slate-100" x-show="isSidebarOpen">Article</h2>
+        <h2 class="font-bold text-white dark:text-slate-100" x-show="isSidebarOpen">Information</h2>
 
         <span class="sr-only">Dashboard</span>
     </a>

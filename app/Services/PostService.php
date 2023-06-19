@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Storage;
 
 /**
  * Class PostService
- * @package App\Services
  */
 class PostService
 {
     public ?string $newImage = null;
+
     public ?string $oldImage = null;
+
     private Post $post;
 
     public function __construct()
@@ -32,8 +33,26 @@ class PostService
         try {
             $posts = $this->post->query()->with('user', 'category');
 
-            $posts->when($request->routeIs('landing.index'), function ($query) {
+            $posts->when($request->routeIs('landing.index', 'landing.teknologi.index', 'landing.bisnis.index'), function ($query) {
                 $query->where('status', PublishStatusEnum::status['PUBLISH']);
+            });
+            $posts->when($request->routeIs('landing.teknologi.index'), function ($query) {
+                $query->whereHas('category', function ($categoryQuery) {
+                    $categoryQuery->where('title', 'teknologi');
+                });
+            });
+            $posts->when($request->routeIs('landing.bisnis.index'), function ($query) {
+                $query->whereHas('category', function ($categoryQuery) {
+                    $categoryQuery->where('title', 'bisnis');
+                });
+            });
+            $posts->when($request->routeIs('landing.olahraga.index'), function ($query) {
+                $query->whereHas('category', function ($categoryQuery) {
+                    $categoryQuery->where('title', 'olahraga');
+                });
+            });
+            $posts->when($request->filled('keywords'), function ($query) use ($request) {
+                return $query->where('title', 'like', "%$request->keywords%");
             });
 
             return $posts;
@@ -52,7 +71,6 @@ class PostService
                 $data['image'] = $this->newImage;
             }
             $data['user_id'] = auth()->id();
-
 
             $posts = $this->post->create($data);
             DB::commit();

@@ -6,6 +6,6 @@ class PostStatusEnum
 {
     public const post_status = [
         'MAIN' => 1,
-        'NORMAL' => 0
+        'NORMAL' => 0,
     ];
 }

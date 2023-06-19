@@ -56,6 +56,7 @@ class PostFactory extends Factory
             ];
         });
     }
+
     public function main()
     {
         return $this->state(function (array $attributes) {
@@ -64,6 +65,7 @@ class PostFactory extends Factory
             ];
         });
     }
+
     public function normal()
     {
         return $this->state(function (array $attributes) {

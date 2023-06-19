@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +16,6 @@ use App\Http\Controllers\ProfileController;
 // home routes
 Route::get('/', 'Landing\HomeController@index')->name('home');
 
-
-
 // useless routes
 // Just to demo sidebar dropdown links active states.
 Route::get('/buttons/text', function () {
@@ -33,4 +30,4 @@ Route::get('/buttons/text-icon', function () {
     return view('buttons-showcase.text-icon');
 })->middleware(['auth'])->name('buttons.text-icon');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

@@ -16,6 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
+    <link rel="icon" type="png" href="{{ asset('assets/content/icon.png') }}">
 
     <!-- Styles -->
     <style>
@@ -23,12 +24,14 @@
             display: none;
         }
     </style>
-
+    @notifyCss
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
+
+
     <div x-data="mainState" class="font-sans antialiased" :class="{ dark: isDarkMode }" x-cloak>
         <div class="flex flex-col min-h-screen text-gray-900 bg-cover bg-center bg-repeat  dark:bg-dark-eval-0 dark:text-gray-200"
             style="background-image: url('{{ asset('assets/background/loginBackgorund.jpg') }}');">
@@ -45,6 +48,9 @@
             </x-button>
         </div>
     </div>
+
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

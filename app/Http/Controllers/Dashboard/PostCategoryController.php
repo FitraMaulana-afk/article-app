@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCategory\StorePostCategoryRequest;
-use Illuminate\Http\Request;
-use App\Models\PostCategory;
 use App\Http\Requests\PostCategory\UpdatePostCategoryRequest;
+use App\Models\PostCategory;
 use App\Services\PostCategoryService;
 use Exception;
 use Illuminate\Support\Facades\Log;
@@ -21,6 +20,7 @@ class PostCategoryController extends Controller
     {
         $this->postCategoryService = new PostCategoryService;
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +28,8 @@ class PostCategoryController extends Controller
     {
         $postCategoryView = $this->postCategoryView;
         $postCategories = $this->postCategoryService->index()->paginate(10);
-        return view($postCategoryView . 'index', compact('postCategories'));
+
+        return view($postCategoryView.'index', compact('postCategories'));
     }
 
     /**
@@ -37,7 +38,8 @@ class PostCategoryController extends Controller
     public function create()
     {
         $postCategoryView = $this->postCategoryView;
-        return view($postCategoryView . 'create',);
+
+        return view($postCategoryView.'create');
     }
 
     /**
@@ -61,7 +63,8 @@ class PostCategoryController extends Controller
     public function show(PostCategory $postCategory)
     {
         $postCategoryView = $this->postCategoryView;
-        return view($postCategoryView . 'show', compact('postCategory'));
+
+        return view($postCategoryView.'show', compact('postCategory'));
     }
 
     /**
@@ -70,7 +73,8 @@ class PostCategoryController extends Controller
     public function edit(PostCategory $postCategory)
     {
         $postCategoryView = $this->postCategoryView;
-        return view($postCategoryView . 'edit', compact('postCategory'));
+
+        return view($postCategoryView.'edit', compact('postCategory'));
     }
 
     /**

@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\PostCategory;
 use App\Http\Requests\PostCategory\StorePostCategoryRequest;
 use App\Http\Requests\PostCategory\UpdatePostCategoryRequest;
+use App\Models\PostCategory;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 /**
  * Class PostCategoryService
- * @package App\Services
  */
 class PostCategoryService
 {
@@ -32,7 +31,6 @@ class PostCategoryService
         }
     }
 
-
     public function store(StorePostCategoryRequest $request)
     {
         DB::begintransaction();
@@ -51,7 +49,6 @@ class PostCategoryService
             Log::emergency($e->getMessage());
         }
     }
-
 
     public function update(UpdatePostCategoryRequest $request, PostCategory $postCategory)
     {

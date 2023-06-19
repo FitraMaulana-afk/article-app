@@ -20,6 +20,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'avatar',
         'name',
         'email',
         'password',
@@ -52,5 +53,10 @@ class User extends Authenticatable
     public function postCategories(): HasMany
     {
         return $this->hasMany(PostCategory::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 }

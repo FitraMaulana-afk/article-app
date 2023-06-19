@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Post;
 
-use App\Enums\MainStatusEnum;
 use App\Enums\PostStatusEnum;
 use App\Enums\PublishStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,31 +26,31 @@ class StorePostRequest extends FormRequest
     {
         return [
             'post_category_id' => 'required',
-            "title" => [
-                "required",
-                "max:255",
+            'title' => [
+                'required',
+                'max:255',
             ],
-            "description" => [
-                "nullable"
+            'description' => [
+                'nullable',
             ],
-            "image" => [
-                "image",
-                "max:2035",
-                "mimes:png,jpg,svg,gif",
+            'image' => [
+                'image',
+                'max:2035',
+                'mimes:png,jpg,svg,gif',
             ],
-            "link" => [
-                "nullable"
+            'link' => [
+                'nullable',
             ],
             'status' => [
                 // 'required',
                 'nullable',
-                Rule::in(PublishStatusEnum::status)
+                Rule::in(PublishStatusEnum::status),
             ],
             'post_status' => [
                 // 'required',
                 'nullable',
-                Rule::in(PostStatusEnum::post_status)
-            ]
+                Rule::in(PostStatusEnum::post_status),
+            ],
 
         ];
     }

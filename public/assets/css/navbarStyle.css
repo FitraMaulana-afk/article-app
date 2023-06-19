@@ -1,0 +1,33 @@
+/* navlink style */
+.navlink {
+    width: 60%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navlink li {
+    overflow: hidden;
+}
+
+.navlink li a {
+    transition: all 0.3s ease;
+}
+
+.navlink li a:hover {
+    color: #171717;
+}
+
+.navlink li a::after {
+    content: "";
+    display: block;
+    width: 80%;
+    border-bottom: 2px solid #171717;
+    z-index: 20;
+    transform: translate(-150%);
+    transition: all 1s ease;
+}
+
+.navlink li a:hover::after {
+    transform: translate(150%);
+}

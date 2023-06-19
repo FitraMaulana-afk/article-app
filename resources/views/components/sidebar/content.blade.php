@@ -13,7 +13,7 @@
         'buttons',
     )">
         <x-slot name="icon">
-            <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <i class="fa-solid fa-layer-group mx-1"></i>
         </x-slot>
 
         <x-sidebar.sublink title="Posts" href="{{ route('post.index') }}" :active="request()->routeIs('post.index')" />
@@ -22,7 +22,7 @@
 
     <x-sidebar.link title="Comment" href="{{ route('dashboard') }}">
         <x-slot name="icon">
-            <x-icons.dashboard class="flex-shrink-0 w-6 h-6" aria-hidden="true" />
+            <i class="fa-solid fa-comments mx-1"></i>
         </x-slot>
     </x-sidebar.link>
 

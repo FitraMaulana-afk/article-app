@@ -7,6 +7,6 @@ class PublishStatusEnum
     public const status = [
         'PENDING' => 2,
         'PUBLISH' => 1,
-        'DRAFT' => 0
+        'DRAFT' => 0,
     ];
 }
