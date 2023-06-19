@@ -22,5 +22,4 @@
 
     @include('landing-page.home.content')
 
-
 </x-landing.base>

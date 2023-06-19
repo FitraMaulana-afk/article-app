@@ -58,7 +58,7 @@
     <x-landing.navbar />
     <div class="flex flex-col justify-center items-center top-0">
         <div class="container">
-            <main class="md:px-20 px-2  min-h-screen">
+            <main class=" px-2  min-h-screen">
                 {{ $slot }}
             </main>
         </div>
